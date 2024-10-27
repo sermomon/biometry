@@ -38,8 +38,8 @@ m <- model2$coefficients[[2]] # pendiente
 
 # Mostrar modelo en forma potencial
 
-a <- exp(m)
-b <- n
+a <- exp(n)
+b <- m
 
 plot(data$L, data$W, xlab="L [cm]", ylab="W [g]", col="skyblue",
      main="O. niloticus")
@@ -49,6 +49,7 @@ curve(exp(n)*x^m, add=TRUE, col="red", lwd=2)
 
 summary(model2)
 R2 <- summary(model2)$r.squared
+print(R2)
 
 # Calcular el MRE
 
@@ -56,4 +57,4 @@ pred <- predict(model2)
 data$Wpred <- exp(pred)
 
 MRE <- mean(abs((data$W - data$Wpred) / data$W))
-
+print(MRE)
